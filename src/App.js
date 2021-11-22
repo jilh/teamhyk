@@ -5,9 +5,13 @@ import './App.css';
 function App() {
   return (
     <div className={"container"}>
-      <img src={logo} className="logo"/>
+      <div class="header">
+        <img src={logo} className="logo"/>
+        <p>...all round adventure</p>
+      </div>
       <div className={"card"}>
         <div className={"card-image card-size"}></div>
+        <div className={"card-image-mobile"}></div>
         <div className={"card-content card-size"}>
           <form className="form">
             <div className="form-row">
