@@ -1,11 +1,25 @@
+import React, { useState } from 'react';
+
 import logo from './logo.svg';
-import bigBanner from './images/banner-big.png';
+// import bigBanner from './images/banner-big.png';
 import './App.css';
 
 function App() {
+
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [referral, setReferral] = useState("");
+
+  const handleFirstNameChanged = (e) => {
+    setFirstname(e.target.value);
+    console.log(firstname);
+  }
+
   return (
     <div className={"container"}>
-      <div class="header">
+      <div className="header">
         <img src={logo} className="logo"/>
         <p>...all round adventure</p>
       </div>
@@ -16,7 +30,7 @@ function App() {
           <form className="form">
             <div className="form-row">
               <div className="form-column">
-                <input type="text" name="firstname" placeholder="Firstname" className="form-input" />
+                <input type="text" name="firstname" placeholder="Firstname" className="form-input" onChange={(e) => handleFirstNameChanged }/>
               </div>
               <div className="form-column">
                 <input type="text" name="lastname" placeholder="Lastname" className="form-input" />
