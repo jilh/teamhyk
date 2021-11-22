@@ -14,36 +14,56 @@ function App() {
 
   const handleFirstNameChanged = (e) => {
     setFirstname(e.target.value);
-    console.log(firstname);
+  }
+
+  const handleLastnameChanged = (e) => {
+    setLastname(e.target.value);
+  }
+
+  const handlePhoneNumberChanged = (e) => {
+    setPhoneNumber(e.target.value);
+  }
+
+  const handleEmailAddressChanged = (e) => {
+    setEmailAddress(e.target.value);
+  }
+
+  const handleReferralChanged = (e) => {
+    setReferral(e.target.value);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(firstname, lastname, emailAddress, phoneNumber, referral);
   }
 
   return (
     <div className={"container"}>
       <div className="header">
-        <img src={logo} className="logo"/>
+        <img src={logo} className="logo" alt="TeamHyk Logo" />
         <p>...all round adventure</p>
       </div>
       <div className={"card"}>
         <div className={"card-image card-size"}></div>
         <div className={"card-image-mobile"}></div>
         <div className={"card-content card-size"}>
-          <form className="form">
+          <form className="form" method="POST" onSubmit={ (e) => handleSubmit(e) }>
             <div className="form-row">
               <div className="form-column">
-                <input type="text" name="firstname" placeholder="Firstname" className="form-input" onChange={(e) => handleFirstNameChanged }/>
+                <input type="text" name="firstname" placeholder="Firstname" value={firstname} className="form-input" onChange={ (e) => handleFirstNameChanged(e) }/>
               </div>
               <div className="form-column">
-                <input type="text" name="lastname" placeholder="Lastname" className="form-input" />
+                <input type="text" name="lastname" placeholder="Lastname" value={lastname} className="form-input" onChange={ (e) => handleLastnameChanged(e) }/>
               </div>
             </div>
             <div className="form-group">
-              <input type="phone" name="phone" placeholder="Phone Number" className="form-input" />
+              <input type="phone" name="phone" placeholder="Phone Number" value={phoneNumber} className="form-input" onChange={ (e) => handlePhoneNumberChanged(e) }/>
             </div>
             <div className="form-group">
-              <input type="email" name="email" placeholder="Email Address" className="form-input" />
+              <input type="email" name="email" placeholder="Email Address" value={emailAddress} className="form-input" onChange={ (e) => handleEmailAddressChanged(e) }/>
             </div>
             <div className="form-group">
-              <select className="form-input">
+              <select className="form-input" value={referral} onChange={ (e) => handleReferralChanged(e) }>
                 <option value="">How did you hear about us?</option>
                 <option value="facebook">Facebook</option>
                 <option value="google">Google</option>
