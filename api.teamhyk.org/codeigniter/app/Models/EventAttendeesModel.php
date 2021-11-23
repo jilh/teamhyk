@@ -10,8 +10,9 @@ class EventAttendeesModel extends Model{
         'lastname',
         'phone_number',
         'email_address',
-        'referal',
-        'created_at'
+        'referral',
+        'created_at',
+        'updated_at'
     ];
 }
 
