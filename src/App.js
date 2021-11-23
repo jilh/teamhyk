@@ -6,7 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL === "undefined" ? 'https://api.teamhyk.org' : process.env.REACT_APP_API_URL
+  baseURL: process.env.REACT_APP_API_URL === "undefined" ? 'https://api.teamhyk.org/' : process.env.REACT_APP_API_URL
 });
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    instance.post('/eventattendees/register', {
+    instance.post('eventattendees/register', {
       firstname: firstname,
       lastname: lastname,
       phone_number: phoneNumber,
