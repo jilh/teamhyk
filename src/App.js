@@ -6,7 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  baseURL: 'https://api.teamhyk.org/'
 });
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    instance.post(process.env.REACT_APP_API_URL + 'register', {
+    instance.post(baseURL + 'register', {
       firstname: firstname,
       lastname: lastname,
       phone_number: phoneNumber,
