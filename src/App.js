@@ -5,6 +5,10 @@ import logo from './logo.svg';
 // import bigBanner from './images/banner-big.png';
 import './App.css';
 
+const instance = axios.create({
+  baseURL: process.env.REACT_APP_API_URL
+});
+
 function App() {
 
   const [firstname, setFirstname] = useState("");
@@ -36,7 +40,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post(process.env.REACT_APP_API_URL + '/register', {
+    instance.post(process.env.REACT_APP_API_URL + 'register', {
       firstname: firstname,
       lastname: lastname,
       phone_number: phoneNumber,
