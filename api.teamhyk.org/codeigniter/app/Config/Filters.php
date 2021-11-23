@@ -19,6 +19,7 @@ class Filters extends BaseConfig
         'csrf'     => CSRF::class,
         'toolbar'  => DebugToolbar::class,
         'honeypot' => Honeypot::class,
+        'corsfilter' => \App\Filters\CorsFilter::class,
     ];
 
     /**
@@ -29,6 +30,7 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
+            'corsfilter',
             // 'honeypot',
             // 'csrf',
         ],

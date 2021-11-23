@@ -63,7 +63,7 @@ class EventAttendees extends ResourceController
     
             if($this->eventAttendeeModel->insert($data)){
                 $response = [
-                    'status' => 201,
+                    'status' => 200,
                     'error' => null,
                     'message' => [
                         'success' => 'Customer Created'

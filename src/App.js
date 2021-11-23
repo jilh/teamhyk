@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import logo from './logo.svg';
 // import bigBanner from './images/banner-big.png';
@@ -34,7 +35,18 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(firstname, lastname, emailAddress, phoneNumber, referral);
+
+    axios.post(process.env.REACT_APP_API_URL + '/register', {
+      firstname: firstname,
+      lastname: lastname,
+      phone_number: phoneNumber,
+      email_address: emailAddress,
+      referral: referral
+    }).then(function(response){
+      console.log(response);
+    }).catch(function(error){
+      console.log(error);
+    });
   }
 
   return (
