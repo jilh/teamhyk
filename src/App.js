@@ -40,7 +40,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    instance.post('/eventattendees/register', {
+    instance.post('/eventattendees/create', {
       firstname: firstname,
       lastname: lastname,
       phone_number: phoneNumber,
