@@ -15,7 +15,15 @@ class EventAttendees extends ResourceController
         $this->eventAttendeeModel = new EventAttendeesModel();
     }
 
-    public function register(){
+    public function index(){
+
+    }
+
+    public function show($id = null){
+
+    }
+
+    public function create(){
 
         $rules = [
             'firstname' => 'required',
