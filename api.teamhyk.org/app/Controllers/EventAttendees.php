@@ -16,7 +16,7 @@ class EventAttendees extends ResourceController
     }
 
     public function index(){
-
+        echo "Welcome";
     }
 
     public function show($id = null){
