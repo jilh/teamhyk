@@ -63,7 +63,13 @@ function App() {
         <div className={"card-image card-size"}></div>
         <div className={"card-image-mobile"}></div>
         <div className={"card-content card-size"}>
+            <div className="info-card">
+              <div className="info-card-contents info-card-error">
+                <p>Registration Successful</p>
+              </div>
+            </div>
           <form className="form" method="POST" onSubmit={ (e) => handleSubmit(e) }>
+            
             <div className="form-row">
               <div className="form-column">
                 <input type="text" name="firstname" placeholder="Firstname" value={firstname} className="form-input" onChange={ (e) => handleFirstNameChanged(e) }/>

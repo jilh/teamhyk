@@ -74,7 +74,7 @@ class Eventattendees extends ResourceController
                     'status' => 200,
                     'error' => null,
                     'message' => [
-                        'success' => 'Customer Created'
+                        'success' => 'Thanks! Your registration is successful'
                     ]
                 ];
                 return $this->respondCreated($response);

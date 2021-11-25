@@ -41,10 +41,41 @@
   border-radius: 15px 0 0 15px;
 }
 
+.card-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.info-card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: inherit;
+  margin-bottom: 15px;
+}
+.info-card-contents{
+  width: 80%;
+  text-align: center;
+  border-radius: 5px;
+  
+}
+.info-card-success{
+  background: rgba(13, 184, 81, 0.2);
+  color: rgb(13, 184, 81);
+}
+.info-card-error{
+  background: rgba(184, 13, 13, 0.2);
+  color: rgb(184, 13, 13);
+}
+
 .form{
   display: flex;
   flex-direction: column;
-  padding: 100px 50px;
+  box-sizing: border-box;
+  padding: 5px;
 }
 .form > .form-row{
   display: flex;
@@ -60,7 +91,7 @@
   padding: 9px 7px;
   border-radius: 5px;
   border: 1px solid #AFAFAF;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 .form select{
   background: unset;
@@ -70,7 +101,7 @@
 .form-button{
   padding: 9px 7px;
   width: 100%;
-  box-sizing: content-box;
+  box-sizing: border-box;
   font-weight: bold;
   color: #fff;
   background-color: #15ABA5;
