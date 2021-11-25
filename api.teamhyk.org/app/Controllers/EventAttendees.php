@@ -5,7 +5,7 @@ use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\EventAttendeesModel;
 
-class EventAttendees extends ResourceController
+class Eventattendees extends ResourceController
 {
     use ResponseTrait;
 
