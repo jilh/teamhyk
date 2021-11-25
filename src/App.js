@@ -17,6 +17,17 @@ function App() {
   const [emailAddress, setEmailAddress] = useState("");
   const [referral, setReferral] = useState("");
 
+  const [hasError, setHasError] = useState({
+    firstname: false,
+    lastname: false,
+    phone_number: false,
+    email_address: false,
+    referral: false,
+  });
+  const[errorContent, setErrorContent] = useState("");
+
+
+
   const handleFirstNameChanged = (e) => {
     setFirstname(e.target.value);
   }
@@ -50,6 +61,11 @@ function App() {
       console.log(response);
     }).catch(function(error){
       console.log(error);
+      // alert(error.response.data.messages.firstname);
+      if(error.response.data.messages.hasOwnProperty("firstname")){
+        setHasError({...hasError, firstname: true });
+        console.log(hasError.firstname);
+      }
     });
   }
 

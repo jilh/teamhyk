@@ -62,6 +62,7 @@
   border-radius: 5px;
   
 }
+.hide{display: none;}
 .info-card-success{
   background: rgba(13, 184, 81, 0.2);
   color: rgb(13, 184, 81);
