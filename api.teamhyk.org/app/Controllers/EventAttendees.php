@@ -70,14 +70,32 @@ class Eventattendees extends ResourceController
             ];
     
             if($this->eventAttendeeModel->insert($data)){
-                $response = [
-                    'status' => 200,
-                    'error' => null,
-                    'message' => [
-                        'success' => 'Thanks! Your registration is successful'
-                    ]
-                ];
-                return $this->respondCreated($response);
+                $email = \Config\Services::email();
+
+                $email->setFrom('no-reply@teamhyk.org', 'TeamHyk');
+                $email->setTo($data['email_address']);
+
+                $email->setSubject('TeamHyk Event Confirmation');
+                $email->setMessage(view('App\Views\email.html'));
+
+                if($email->send()){
+                    $response = [
+                        'status' => 200,
+                        'error' => null,
+                        'message' => [
+                            'success' => 'Thanks! Your registration is successful'
+                        ]
+                    ];
+                    return $this->respondCreated($response);
+                }else{
+                    $response = [
+                        'status' => 400,
+                        'message' => [
+                            'error' => 'Oops! Service unavailable, please try again'
+                        ]
+                    ];
+                    return $this->fail($response, 400);
+                }
                 
             }
          }
