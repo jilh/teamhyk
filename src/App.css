@@ -72,6 +72,10 @@
   color: rgb(184, 13, 13);
 }
 
+.form-input-error{
+  border: 1px solid rgba(184, 13, 13, 0.8) !important;
+}
+
 .form{
   display: flex;
   flex-direction: column;
@@ -108,6 +112,9 @@
   background-color: #15ABA5;
   border: 1px solid #15ABA5;
   border-radius: 5px;
+}
+.form-button:hover{
+  background-color: #128a86;
 }
 
 @media screen and (max-width: 769px) {
