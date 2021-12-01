@@ -64,6 +64,13 @@ function App() {
       referral: referral
     }).then(function(response){
       setFormSuccess(true);
+
+      setFirstname("");
+      setLastname("");
+      setPhoneNumber("");
+      setEmailAddress("");
+      setReferral("");
+      
     }).catch(function(error){
       console.log(error);
       if('firstname' in error.response.data.messages){

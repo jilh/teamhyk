@@ -26,9 +26,9 @@ class Eventattendees extends ResourceController
     public function create(){
 
         $rules = [
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'phone_number' => 'required',
+            'firstname' => 'required|alpha',
+            'lastname' => 'required|alpha',
+            'phone_number' => 'required|exact_length[11]|is_natural',
             'email_address' => 'required|valid_email|is_unique[event_attendees.email_address]|min_length[6]',
             'referral' => 'required',
         ];
@@ -36,12 +36,16 @@ class Eventattendees extends ResourceController
         $messages = [
             'firstname' => [
                 'required' => 'You forgot a firstname',
+                'alpha' => 'Only alphabets allowed',
             ],
             'lastname' => [
                 'required' => 'You forgot a lastname',
+                'alpha' => 'Only alphabets allowed',
             ],
             'phone_number' => [
                 'required' => 'You forgot phone number',
+                'exact_length' => 'Phone number must be exactly 11 characters',
+                'is_natural' => 'Number is required in this field',
             ],
             'email_address' => [
                 'required' => 'You forgot email address',
