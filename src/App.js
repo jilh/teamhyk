@@ -75,6 +75,12 @@ function App() {
       setEmailAddress("");
       setReferral("");
 
+      setFirstnameError(false);
+      setLastnameError(false);
+      setPhoneNumberError(false);
+      setEmailAddressError(false);
+      setReferralError(false);
+
       setIsSubmitting(false);
       
     }).catch(function(error){
