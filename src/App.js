@@ -196,7 +196,7 @@ function App() {
               </div>
             </div>
             <div className="form-group">
-              <input type="phone" name="phone" placeholder="Phone Number" value={phoneNumber} className={ phoneNumberError ? 'form-input form-input-error': 'form-input' } onChange={ (e) => handlePhoneNumberChanged(e) }/>
+              <input type="phone" name="phone" placeholder="Phone Number e.g. 08012345678" value={phoneNumber} className={ phoneNumberError ? 'form-input form-input-error': 'form-input' } onChange={ (e) => handlePhoneNumberChanged(e) }/>
             </div>
             <div className="form-group">
               <input type="email" name="email" placeholder="Email Address" value={emailAddress} className={ emailAddressError ? 'form-input form-input-error': 'form-input' } onChange={ (e) => handleEmailAddressChanged(e) }/>
