@@ -23,14 +23,16 @@ function App() {
   const [emailAddressError, setEmailAddressError] = useState(false);
   const [referralError, setReferralError] = useState(false);
 
-  // const [hasError, setHasError] = useState({
-  //   firstname: false,
-  //   lastname: false,
-  //   phone_number: false,
-  //   email_address: false,
-  //   referral: false,
-  // });
+  const [errorNotes, setErrorNotes] = useState({
+    firstname: '',
+    lastname: '',
+    phone_number: '',
+    email_address: '',
+    referral: '',
+  });
 
+  const[isSubmitting, setIsSubmitting] = useState(false);
+  const[formError, setFormError] = useState(false);
   const[formSuccess, setFormSuccess] = useState(false);
 
   const handleFirstNameChanged = (e) => {
@@ -55,6 +57,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     instance.post('/eventattendees/create', {
       firstname: firstname,
@@ -63,6 +66,7 @@ function App() {
       email_address: emailAddress,
       referral: referral
     }).then(function(response){
+      setFormError(false);
       setFormSuccess(true);
 
       setFirstname("");
@@ -70,28 +74,82 @@ function App() {
       setPhoneNumber("");
       setEmailAddress("");
       setReferral("");
+
+      setIsSubmitting(false);
       
     }).catch(function(error){
       console.log(error);
       if('firstname' in error.response.data.messages){
         setFirstnameError(true);
+        setFormError(true);
+        setErrorNotes(prevState => {
+          return { ...prevState, firstname : error.response.data.messages.firstname }
+        });
+      }else{
+        setFirstnameError(false);
+        // setFormError(false);
+        setErrorNotes(prevState => {
+          return { ...prevState, firstname : '' }
+        });
       }
 
       if('lastname' in error.response.data.messages){
         setLastnameError(true); 
+        setFormError(true);
+        setErrorNotes(prevState => {
+          return { ...prevState, lastname : error.response.data.messages.lastname }
+        });
+      }else{
+        setLastnameError(false); 
+        // setFormError(false);
+        setErrorNotes(prevState => {
+          return { ...prevState, lastname : '' }
+        });
       }
 
       if('phone_number' in error.response.data.messages){
         setPhoneNumberError(true); 
+        setFormError(true);
+        setErrorNotes(prevState => {
+          return { ...prevState, phone_number : error.response.data.messages.phone_number }
+        });
+      }else{
+        setPhoneNumberError(false); 
+        // setFormError(false);
+        setErrorNotes(prevState => {
+          return { ...prevState, phone_number : '' }
+        });
       }
 
       if('email_address' in error.response.data.messages){
         setEmailAddressError(true);
+        setFormError(true);
+        setErrorNotes(prevState => {
+          return { ...prevState, email_address : error.response.data.messages.email_address }
+        });
+      }else{
+        setEmailAddressError(false);
+        // setFormError(false);
+        setErrorNotes(prevState => {
+          return { ...prevState, email_address : '' }
+        });
       }
 
       if('referral' in error.response.data.messages){
         setReferralError(true);
+        setFormError(true);
+        setErrorNotes(prevState => {
+          return { ...prevState, referral : error.response.data.messages.referral }
+        });
+      }else{
+        setReferralError(false);
+        // setFormError(false);
+        setErrorNotes(prevState => {
+          return { ...prevState, referral : '' }
+        });
       }
+
+      setIsSubmitting(false);
     });
   }
 
@@ -110,6 +168,17 @@ function App() {
                 <p>Registration Successful</p>
               </div>
             </div>
+
+            <div className={ formError === true ? "info-card" : "hide"}>
+              <div className="info-card-contents info-card-error">
+                { errorNotes.firstname !== "" ? <p>{ errorNotes.firstname }</p> : "" }
+                { errorNotes.lastname !== "" ? <p>{ errorNotes.lastname }</p> : "" }
+                { errorNotes.phone_number !== "" ? <p>{ errorNotes.phone_number }</p> : "" }
+                { errorNotes.email_address !== "" ? <p>{ errorNotes.email_address }</p> : "" }
+                { errorNotes.referral !== "" ? <p>{ errorNotes.referral }</p> : "" }
+              </div>
+            </div>
+
           <form className="form" method="POST" onSubmit={ (e) => handleSubmit(e) }>
             
             <div className="form-row">
@@ -131,10 +200,12 @@ function App() {
                 <option value="">How did you hear about us?</option>
                 <option value="facebook">Facebook</option>
                 <option value="google">Google</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="friend">Friend</option>
               </select>
             </div>
             <div className="form-group">
-              <input type="submit" value="Register" className="form-button" />
+              <input type="submit" value={ isSubmitting ? "Submitting..." : "Register" } className="form-button" disabled={ isSubmitting }/>
             </div>
 
           </form>

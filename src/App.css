@@ -55,6 +55,7 @@
   position: relative;
   width: inherit;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 .info-card-contents{
   width: 80%;
@@ -70,6 +71,11 @@
 .info-card-error{
   background: rgba(184, 13, 13, 0.2);
   color: rgb(184, 13, 13);
+  padding: 12px;
+}
+.info-card-error p{
+  font-size: 12px;
+  margin: 0;
 }
 
 .form-input-error{
@@ -114,6 +120,9 @@
   border-radius: 5px;
 }
 .form-button:hover{
+  background-color: #128a86;
+}
+.form-button:disabled, .form-button[disabled]{
   background-color: #128a86;
 }
 
